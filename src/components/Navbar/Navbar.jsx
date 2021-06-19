@@ -1,17 +1,25 @@
 import React from 'react';
 import './style.scss';
 import { GrClose } from 'react-icons/gr';
+import { CgSearch } from 'react-icons/cg';
+import { IoMdArrowDropdown } from 'react-icons/io';
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="navbar__logo">
+      <span className="navbar__logo">
         <img src="./logo.jpeg" alt="utlandia" />
-      </div>
+      </span>
       <div className="navbar__logo">UTLANDIA</div>
-      <div className="navbar__select">building 1</div>
-      <div className="navbar__select">section 1</div>
-      <div className="navbar__search">search</div>
+      <div className="navbar__select">
+        building 1 <IoMdArrowDropdown />
+      </div>
+      <div className="navbar__select">
+        section 1 <IoMdArrowDropdown />
+      </div>
+      <div className="navbar__search">
+        search <CgSearch />
+      </div>
       <div className="navbar__close">
         <GrClose />
       </div>

@@ -1,0 +1,49 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 0 50px;
+
+  &__column {
+    display: flex;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      padding: 0 15px;
+      margin: 0 10px;
+      border: 1px solid rgb(192, 191, 191);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s linear;
+      svg {
+        width: 20px;
+        height: 20px;
+        color: rgb(180, 179, 179);
+      }
+      &:hover {
+        background-color: rgb(243, 243, 243);
+      }
+      &.active {
+        background-color: #1abc9c;
+        svg {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__chess {
+  }
+
+  &__items {
+  }
+  &__table {
+  }
+}
+.filter {
+  &__btn {
+  }
+}

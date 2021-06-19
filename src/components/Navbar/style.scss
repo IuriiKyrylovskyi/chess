@@ -4,8 +4,55 @@
   height: 80px;
   width: 100%;
   position: relative;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 7%);
   & div {
-    margin-right: 30px;
+    height: 34px;
+    margin-left: 30px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 2px;
+    background-color: rgb(238, 238, 238);
+    transition: all 0.3s linear;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+
+  & div:last-child {
+    position: absolute;
+    z-index: 1;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    background-color: #ec6372;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: all 0.1s linear;
+      path {
+        stroke: #fff;
+      }
+    }
+    &:hover {
+      background-color: #dd3044;
+      svg {
+        width: 23px;
+        height: 23px;
+      }
+    }
   }
 
   &__logo {

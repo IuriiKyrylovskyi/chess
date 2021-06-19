@@ -1,13 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from './components/Navbar/Navbar';
+import Hero from './components/Hero/Hero';
 import './App.scss';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <Router>
         <NavBar />
-      </header>
+        <Hero />
+      </Router>
     </div>
   );
 };
