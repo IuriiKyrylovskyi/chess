@@ -1,0 +1,51 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  position: relative;
+  & div {
+    margin-right: 30px;
+  }
+
+  &__logo {
+  }
+
+  &__select {
+  }
+
+  &__search {
+  }
+
+  &__close {
+    position: absolute;
+    z-index: 1;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    background-color: #ec6372;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: all 0.1s linear;
+      path {
+        stroke: #fff;
+      }
+    }
+    &:hover {
+      background-color: #dd3044;
+      svg {
+        width: 23px;
+        height: 23px;
+      }
+    }
+  }
+}
