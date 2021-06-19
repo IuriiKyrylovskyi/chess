@@ -66,11 +66,14 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  // border: 1px solid rgb(192, 191, 191);
-  // margin-left: -1px;
   font-size: 13px;
-
-  // border-right: 1px solid #d7d8da;
-  // border-bottom: 1px solid #d7d8da;
   border: 0.5px solid #d7d8da;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 7px;
+    border-radius: 5px;
+    color: #fff;
+  }
 }

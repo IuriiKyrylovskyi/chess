@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FiGrid } from 'react-icons/fi';
 import { DiTrello } from 'react-icons/di';
 import { AiOutlineBars } from 'react-icons/ai';
@@ -7,6 +7,7 @@ import { CgSearch } from 'react-icons/cg';
 import './style.scss';
 
 const MainNavBar = () => {
+  // const [active, setActive] = useState(false);
   return (
     <div className="nav">
       <div className="nav__column">
@@ -15,21 +16,21 @@ const MainNavBar = () => {
         </div>
       </div>
       <div className="nav__column">
-        <Link to="/">
-          <div className="nav__chess active">
+        <NavLink to="/" exact>
+          <div className="nav__chess">
             <FiGrid />
           </div>
-        </Link>
-        <Link to="/cards">
-          <div className="nav__items ">
+        </NavLink>
+        <NavLink to="/cards">
+          <div className="nav__items">
             <DiTrello />
           </div>
-        </Link>
-        <Link to="/table">
-          <div className="nav__table ">
+        </NavLink>
+        <NavLink to="/table">
+          <div className="nav__table">
             <AiOutlineBars />
           </div>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

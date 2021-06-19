@@ -26,11 +26,11 @@
       &:hover {
         background-color: rgb(243, 243, 243);
       }
-      &.active {
-        background-color: #1abc9c;
-        svg {
-          color: #fff;
-        }
+    }
+    a.active div{
+      background-color: #1abc9c;
+      svg {
+        color: #fff;
       }
     }
   }

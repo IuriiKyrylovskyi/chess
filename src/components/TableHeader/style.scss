@@ -3,5 +3,8 @@
   text-align: center;
   .table__row {
     background-color: #fff;
+    .cell span {
+      color: #000;
+    }
   }
 }
