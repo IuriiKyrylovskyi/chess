@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiGrid } from 'react-icons/fi';
 import { DiTrello } from 'react-icons/di';
@@ -7,7 +7,6 @@ import { CgSearch } from 'react-icons/cg';
 import './style.scss';
 
 const MainNavBar = () => {
-  // const [active, setActive] = useState(false);
   return (
     <div className="nav">
       <div className="nav__column">
