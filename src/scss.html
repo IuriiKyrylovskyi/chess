@@ -1,16 +1,23 @@
-<div class="nav">
-  <div class="nav__column">
-    <div class="filter__btn">filter flat</div>
+<div class="card">
+  <div class="card__title">{`${rowData.type} ${type}`}</div>
+  <div class="card__subtitle">
+    {`${rowData.building} ${building}, ${rowData.section} ${section}`}
   </div>
-  <div class="nav__column">
-    <div class="nav__chess">
-      <FiGrid />
+  <div class="card__img-box">
+    <img src={image || noImg} alt="flat" />
+  </div>
+  <div class="card__price">
+    <span>{`from ${priceTotal}$`}</span>
+  </div>
+  <div class="card__row">
+    <div class="card__square">
+      {rowData.square}
+      <span>{`${square} m2`}</span>
     </div>
-    <div class="nav__items">
-      <DiTrello />
-    </div>
-    <div class="nav__items">
-      <AiOutlineBars />
+    <div class="card__rooms">
+      {rowData.rooms}
+      <span>{rooms}</span>
     </div>
   </div>
+  <div class="card__info">1 was found</div>
 </div>

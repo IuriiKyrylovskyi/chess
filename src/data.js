@@ -24,6 +24,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'sold',
   },
   {
@@ -37,6 +38,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'sold',
   },
   {
@@ -63,6 +65,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '300',
     priceTotal: '5580',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'free',
   },
   {
@@ -102,6 +105,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'free',
   },
   {
@@ -115,6 +119,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'free',
   },
   {
@@ -128,6 +133,7 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'free',
   },
   {
@@ -141,20 +147,8 @@ export const dataSection = [
     floor: '5',
     pricePerM: '2000',
     priceTotal: '20000',
+    image: 'https://flatris.com.ua/assets/components/gallery/connector.php?action=web/phpthumb&ctx=web&w=270&h=200&zc=0&far=0&q=100&src=/assets/uploads/216/plans/2d-12097-1612365042.jpeg',
     status: 'free',
   },
 ];
 
-// export const rowData = [
-//   id
-//   number,
-//   type,
-//   rooms,
-//   square,
-//   building,
-//   section,
-//   floor,
-//   pricePerM,
-//   priceTotal,
-//   status,
-// ];

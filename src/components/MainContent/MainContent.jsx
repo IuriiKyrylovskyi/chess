@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MainChess from '../MainChess/MainChess';
-import MainItems from '../MainItems/MainItems';
+import MainCards from '../MainCards/MainCards';
 import MainTable from '../MainTable/MainTable';
 
 const MainContent = () => {
@@ -12,7 +12,7 @@ const MainContent = () => {
           <MainChess />
         </Route>
         <Route path="/cards">
-          <MainItems />
+          <MainCards />
         </Route>
         <Route path="/table">
           <MainTable />

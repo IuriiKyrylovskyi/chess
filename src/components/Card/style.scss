@@ -1,0 +1,112 @@
+.card {
+  flex: 0 0 23%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(192, 191, 191);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  &:hover {
+    box-shadow: 0 6px 20px 7px rgb(0 0 0 / 10%);
+  }
+  @media (max-width: 1100px) {
+    flex: 0 0 30%;
+  }
+  @media (max-width: 800px) {
+    flex: 0 0 47%;
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+    text-align: center;
+    border-bottom: 1px solid #d7d8da;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    span {
+      display: block;
+      font-size: 10px;
+      font-style: normal;
+      color: #a0a0a0;
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__img-box {
+    height: 170px;
+    text-align: center;
+    padding: 15px 5px;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__price {
+    text-align: right;
+    border-bottom: 1px solid #d7d8da;
+    span {
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px 5px;
+      border-radius: 4px;
+      background-color: #ffd060;
+      margin: 10px 10px 10px auto;
+      line-height: 15px;
+      vertical-align: bottom;
+      p {
+        font-size: 15px;
+        line-height: 12px;
+        padding-left: 4px;
+        padding-right: 2px;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    background-color: #f9f9f9;
+  }
+
+  &__square,
+  &__rooms {
+    flex: 0 0 50%;
+    width: 50%;
+    padding: 10px 0;
+    border-right: 1px solid #d7d8da;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    span {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #444;
+      margin-top: 5px;
+    }
+  }
+
+  // &__rooms {
+  //   flex: 0 0 50%;
+  //   width: 50%;
+  //   padding: 10px 0;
+  //   border-right: 1px solid #d7d8da;
+  // }
+
+  &__info {
+    padding: 10px 0;
+    background: #1abc9c;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+    padding: 10px;
+  }
+}
