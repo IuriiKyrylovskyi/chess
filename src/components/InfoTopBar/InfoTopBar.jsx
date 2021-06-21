@@ -1,8 +1,9 @@
 import React from 'react';
-import './style.scss'
+import { dataSection } from '../../data';
+import './style.scss';
 
 const InfoTopBar = () => {
-  const count = 38;
+  const count = dataSection.length;
 
   return (
     <div className="main__info info">

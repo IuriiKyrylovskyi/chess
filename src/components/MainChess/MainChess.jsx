@@ -1,10 +1,13 @@
 import React from 'react';
+import ChessBgr from '../ChessBgr/ChessBgr';
+import ChessContent from '../ChessContent/ChessContent';
+import './style.scss';
 
 const MainChess = () => {
   return (
     <div className="chess">
-      <div className="chess__numbers-wrapper">1 2 3 4 5</div>
-      <div className="chess__section-wrapper">House 1</div>
+      <ChessBgr />
+      <ChessContent />
     </div>
   );
 };

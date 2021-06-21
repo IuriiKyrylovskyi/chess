@@ -1,0 +1,27 @@
+.chess__cell {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-transform: uppercase;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  // margin: 2.5px;
+  transform: all 0.3s linear;
+  position: relative;
+  &:hover {
+    border: 4px solid #fff;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 29px;
+      height: 29px;
+      border: 2px solid rgb(255, 0, 0);
+    }
+  }
+}
