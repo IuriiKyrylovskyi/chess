@@ -1,8 +1,8 @@
 import React from 'react';
 import ChessCell from '../ChessCell/ChessCell';
+import './style.scss';
 
 const ChessFloor = ({ floor }) => {
-  console.log(floor);
   return (
     <div className="chess__floor">
       {floor.map(item => (
