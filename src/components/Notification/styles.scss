@@ -1,0 +1,23 @@
+.notification {
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  color: #fff;
+  z-index: 10;
+
+  &.green {
+    background-color: rgb(43, 119, 43);
+  }
+  &.red {
+    background-color: rgb(197, 32, 32);
+  }
+
+  &__title {
+    margin-bottom: 25px;
+  }
+}

@@ -1,0 +1,38 @@
+.project {
+  flex: 0 0 31%;
+  width: 31%;
+  border: 1px solid blue;
+  border-radius: 10px;
+  line-height: 30px;
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__wrapper {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(49, 49, 49, 0.479);
+  }
+
+  &__title {
+  }
+
+  &__image {
+  }
+
+  &__adress {
+  }
+
+  &__link {
+    span {
+      color: #fff;
+    }
+  }
+}

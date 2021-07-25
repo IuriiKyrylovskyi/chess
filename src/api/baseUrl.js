@@ -1,0 +1,1 @@
+export const baseUrl = 'https://flatomark.com/api/v1';

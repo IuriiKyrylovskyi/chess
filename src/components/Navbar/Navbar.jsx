@@ -1,10 +1,20 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/auth';
+
 import './style.scss';
+
 import { GrClose } from 'react-icons/gr';
 import { CgSearch } from 'react-icons/cg';
 import { IoMdArrowDropdown } from 'react-icons/io';
+import Button from '../Button/Button';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(authActions.logout());
+  };
+
   return (
     <div className="navbar">
       <span className="navbar__logo">
@@ -23,6 +33,11 @@ const Navbar = () => {
       <div className="navbar__close">
         <GrClose />
       </div>
+      <Button
+        onClick={logoutHandler}
+        disabled={false}
+        // color={}
+      />
     </div>
   );
 };

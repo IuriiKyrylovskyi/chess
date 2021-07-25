@@ -5,7 +5,7 @@ import './style.scss';
 
 const ChessContent = () => {
   const sections = [1, 2, 3];
-  
+
   const filteredSectionNumber = sectionNum =>
     dataSection.filter(item => parseInt(item.section) === sectionNum);
 
@@ -16,17 +16,8 @@ const ChessContent = () => {
       {sections.map(num => {
         const currentSection = filteredSectionNumber(num);
 
-        return (
-          <ChessSection
-            key={num}
-            sectNum={num}
-            section={currentSection}
-            // {...filteredSectionNumber}
-          />
-        );
+        return <ChessSection key={num} sectNum={num} section={currentSection} />;
       })}
-
-      <div className="chess__section">SECTION 1</div>
     </div>
   );
 };
