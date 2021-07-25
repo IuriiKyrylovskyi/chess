@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Projects from '../../pages/Projects/Projects';
 import Buildings from '../../pages/Buildings/Buildings';
 import Sections from '../../pages/Sections/Sections';
+import Plans from '../../pages/Plans/Plans';
+import Flats from '../../pages/Flats/Flats';
 import MainChess from '../MainChess/MainChess';
 import MainCards from '../MainCards/MainCards';
 import MainTable from '../MainTable/MainTable';
@@ -16,11 +18,17 @@ const MainContent = () => {
         <Route path="/" exact>
           <Projects />
         </Route>
-        <Route path="/projects/buildings">
+        <Route path="/project/buildings">
           <Buildings />
         </Route>
-        <Route path="/projects/buildings/sections">
+        <Route path="/building/sections">
           <Sections />
+        </Route>
+        <Route path="/plans">
+          <Plans />
+        </Route>
+        <Route path="/flats">
+          <Flats />
         </Route>
         <Route path="/chess">
           <MainChess />

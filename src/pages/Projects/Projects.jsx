@@ -102,7 +102,7 @@ const Projects = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
       {projects.map(project => (
-        <NavLink key={project.id} to={`/projects/buildings`}>
+        <NavLink key={project.id} to={`/project/buildings`}>
           <Project props={project} />
         </NavLink>
       ))}

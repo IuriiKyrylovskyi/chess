@@ -11,7 +11,7 @@ const Building = ({ props }) => {
   const buildingTitle = title || 'title not given';
   const bgImage = './images/add.png';
 
-  // console.log(props);
+  console.log(props);
 
   const handleClick = () => {
     dispatch(buildingActions.getCurrentBuildingId(id));

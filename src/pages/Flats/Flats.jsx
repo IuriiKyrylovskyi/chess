@@ -1,33 +1,37 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { sectionsActions } from '../../store/sections';
+import { flatsActions } from '../../store/flats';
 import { notificationActions } from '../../store/notification';
 import { loadingActions } from '../../store/loading';
 import axios from 'axios';
 
 import { baseUrl } from '../../api/baseUrl';
 
-import Section from '../../components/Section/Section';
+import Flat from '../../components/Flat/Flat';
 import Add from '../../components/Add/Add';
 
 import './styles.scss';
 
-const Sections = () => {
-  const sections = useSelector(state => state.sectionsArr.sections);
+const Flats = () => {
+  const flats = useSelector(state => state.flatsArr.flats);
   const projectId = useSelector(state => state.project.currentProjectId);
   const buildingId = useSelector(state => state.building.currentBuildingId);
+  const sectionId = useSelector(state => state.section.currentSectionId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
 
-  console.log(sections);
+  console.log(flats);
 
-  const filteredSections = sections.filter(section => section.building === buildingId);
-  console.log(filteredSections);
+  const filteredFlats = flats.filter(
+    flat =>
+      flat.building === buildingId && flat.section === sectionId,
+  );
+  console.log(filteredFlats);
   useEffect(() => {
-    axios(`${baseUrl}/projects/sections/?project=${projectId}`)
+    axios(`${baseUrl}/flats/?project=${projectId}`)
       .then(response => {
-        dispatch(sectionsActions.fetchSections(response.data));
+        dispatch(flatsActions.fetchFlats(response.data));
         dispatch(
           notificationActions.showNotification({
             status: 'SUCCESS',
@@ -52,24 +56,24 @@ const Sections = () => {
   }, [dispatch, projectId]);
 
   return (
-    <div className="sections">
-      <h1 className="sections__title">{`Project ${projectId}/ Building ${buildingName}/ sections`}</h1>
-      <div className="sections__content">
+    <div className="flats">
+      <h1 className="flats__title">{`Project ${projectId}/ Building ${buildingName}/ Section ${sectionId}/ flats`}</h1>
+      <div className="flats__content">
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
-        {filteredSections.map(section => (
-          <NavLink key={section.id} to="/plans">
-            <Section props={section} />
+        {filteredFlats.map(flat => (
+          <NavLink key={flat.id} to="/flats">
+            <Flat props={flat} />
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/sections/add">
-          <Add text={'секцию'} />
+        <NavLink to="/flats/add">
+          <Add text={'квартиру'} />
         </NavLink>
       </div>
     </div>
   );
 };
 
-export default Sections;
+export default Flats;

@@ -1,33 +1,37 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { sectionsActions } from '../../store/sections';
+import { plansActions } from '../../store/plans';
 import { notificationActions } from '../../store/notification';
 import { loadingActions } from '../../store/loading';
 import axios from 'axios';
 
 import { baseUrl } from '../../api/baseUrl';
 
-import Section from '../../components/Section/Section';
+import Plan from '../../components/Plan/Plan';
 import Add from '../../components/Add/Add';
 
 import './styles.scss';
 
-const Sections = () => {
-  const sections = useSelector(state => state.sectionsArr.sections);
+const Plans = () => {
+  const plans = useSelector(state => state.plansArr.plans);
   const projectId = useSelector(state => state.project.currentProjectId);
   const buildingId = useSelector(state => state.building.currentBuildingId);
+  const sectionId = useSelector(state => state.section.currentSectionId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
 
-  console.log(sections);
+  console.log(plans);
 
-  const filteredSections = sections.filter(section => section.building === buildingId);
-  console.log(filteredSections);
+  const filteredPlans = plans
+    .filter(plan => plan.building === buildingId && plan.section === sectionId)
+
+  const uniquePlans = [...new Map(filteredPlans.map(plan => [plan['flat_type'], plan])).values()]; console.log(uniquePlans);
+  
   useEffect(() => {
-    axios(`${baseUrl}/projects/sections/?project=${projectId}`)
+    axios(`${baseUrl}/flats/?project=${projectId}`)
       .then(response => {
-        dispatch(sectionsActions.fetchSections(response.data));
+        dispatch(plansActions.fetchPlans(response.data));
         dispatch(
           notificationActions.showNotification({
             status: 'SUCCESS',
@@ -52,24 +56,24 @@ const Sections = () => {
   }, [dispatch, projectId]);
 
   return (
-    <div className="sections">
-      <h1 className="sections__title">{`Project ${projectId}/ Building ${buildingName}/ sections`}</h1>
-      <div className="sections__content">
+    <div className="plans">
+      <h1 className="plans__title">{`Project ${projectId}/ Building ${buildingName}/ Section ${sectionId}/ Plans`}</h1>
+      <div className="plans__content">
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
-        {filteredSections.map(section => (
-          <NavLink key={section.id} to="/plans">
-            <Section props={section} />
+        {uniquePlans.map(plan => (
+          <NavLink key={plan.id} to="/plan/edit">
+            <Plan props={plan} />
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/sections/add">
-          <Add text={'секцию'} />
+        <NavLink to="/plans/add">
+          <Add text={'план'} />
         </NavLink>
       </div>
     </div>
   );
 };
 
-export default Sections;
+export default Plans;

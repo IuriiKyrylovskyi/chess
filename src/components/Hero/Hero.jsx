@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Projects from '../../pages/Projects/Projects';
+// import Projects from '../../pages/Projects/Projects';
 import Main from '../Main/Main';
 import MainFilter from '../MainFilter/MainFilter';
 import ItemSlideBar from '../ItemSlideBar/ItemSlideBar';

@@ -8,8 +8,6 @@ import axios from 'axios';
 
 import { baseUrl } from '../../api/baseUrl';
 
-// import { fetchBuildingsData } from '../../../store/Buildings-actions';
-
 import Building from '../../components/Building/Building';
 import Add from '../../components/Add/Add';
 
@@ -20,14 +18,10 @@ const Buildings = () => {
   const projectId = useSelector(state => state.project.currentProjectId);
   const dispatch = useDispatch();
 
-  console.log(buildings);
+  // console.log(buildings);
 
   useEffect(() => {
-    axios(`${baseUrl}/projects/buildings/?project=${projectId}`, {
-      // params: {
-      //   Buildings: Buildings,
-      // },
-    })
+    axios(`${baseUrl}/projects/buildings/?project=${projectId}`)
       .then(response => {
         dispatch(buildingsActions.fetchBuildings(response.data));
         dispatch(
@@ -55,13 +49,13 @@ const Buildings = () => {
 
   return (
     <div className="buildings">
-      <h1 className="buildings__title">{`Project ${projectId} buildings`}</h1>
+      <h1 className="buildings__title">{`Project ${projectId}/ buildings`}</h1>
       <div className="buildings__content">
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
         {buildings.map(building => (
-          <NavLink key={building.id} to="/projects/buildings/building">
+          <NavLink key={building.id} to="/building/sections">
             <Building props={building} />
           </NavLink>
         ))}
