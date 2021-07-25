@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { projectsActions } from '../../../store/projects';
-import { notificationActions } from '../../../store/notification';
-import { loadingActions } from '../../../store/loading';
+import { projectsActions } from '../../store/projects';
+import { notificationActions } from '../../store/notification';
+import { loadingActions } from '../../store/loading';
 import axios from 'axios';
 
-import { baseUrl } from '../../../api/baseUrl';
+import { baseUrl } from '../../api/baseUrl';
 
 // import { fetchProjectsData } from '../../../store/projects-actions';
 
-import Project from '../../Project/Project';
+import Project from '../../components/Project/Project';
+import Add from '../../components/Add/Add';
 
 import './styles.scss';
 
@@ -100,9 +102,14 @@ const Projects = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
       {projects.map(project => (
-        <Project key={project.id} props={project} />
+        <NavLink key={project.id} to={`/projects/buildings`}>
+          <Project props={project} />
+        </NavLink>
       ))}
       {/* )} */}
+      <Link to={`/projects/add`}>
+        <Add text={'проект'} />
+      </Link>
     </div>
   );
 };

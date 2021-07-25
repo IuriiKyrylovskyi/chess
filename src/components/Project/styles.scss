@@ -1,26 +1,49 @@
 .project {
-  flex: 0 0 31%;
-  width: 31%;
-  border: 1px solid blue;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
   line-height: 30px;
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
-  color: #fff;
+  color: #000;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.1);
-  }
 
   &__wrapper {
-    padding: 30px;
     width: 100%;
     height: 100%;
     cursor: pointer;
-    background-color: rgba(49, 49, 49, 0.479);
+    background-color: #fff;
   }
 
+  &__image-box {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__flats-total {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    color: #000;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 17px;
+    text-align: center;
+  }
+  &__number {
+    color: #fff;
+  }
+  &__content {
+    padding: 30px;
+  }
   &__title {
   }
 
@@ -32,7 +55,7 @@
 
   &__link {
     span {
-      color: #fff;
+      color: #000;
     }
   }
 }

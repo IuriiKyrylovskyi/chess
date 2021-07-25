@@ -15,7 +15,7 @@ const MainNavBar = () => {
         </div>
       </div>
       <div className="nav__column">
-        <NavLink to="/" exact>
+        <NavLink to="/chess" exact>
           <div className="nav__chess">
             <FiGrid />
           </div>
