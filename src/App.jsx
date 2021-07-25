@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 // import { fetchProjectsData } from './store/projects-actions';
 
 import NavBar from './components/Navbar/Navbar';
-import Hero from './components/HeroPage/Hero';
+import Hero from './components/Hero/Hero';
 import Auth from './components/Auth/Auth';
 import Notification from './components/Notification/Notification';
 
