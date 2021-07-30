@@ -12,10 +12,35 @@
     height: 100%;
     cursor: pointer;
     background-color: #fff;
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
+    position: relative;
+  }
+  &__type {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    font-size: 40px;
     padding: 20px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s linear;
+    background-color: #fff;
+    background-repeat: no-repeat, repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1;
+    &:hover {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  &__content {
+    padding: 10px;
+    background: yellow;
   }
 
   // &__image-box {

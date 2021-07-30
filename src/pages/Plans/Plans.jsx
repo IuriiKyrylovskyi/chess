@@ -7,6 +7,7 @@ import { loadingActions } from '../../store/loading';
 import axios from 'axios';
 
 import { baseUrl } from '../../api/baseUrl';
+import { arrayUniqueByKey } from '../../functions/functions';
 
 import Plan from '../../components/Plan/Plan';
 import Add from '../../components/Add/Add';
@@ -22,12 +23,11 @@ const Plans = () => {
   const dispatch = useDispatch();
 
   console.log(plans);
+ 
+  const key = 'flat_type.title';
+  const uniquePlans = arrayUniqueByKey(plans, key);
+  console.log(uniquePlans);
 
-  const filteredPlans = plans
-    .filter(plan => plan.building === buildingId && plan.section === sectionId)
-
-  const uniquePlans = [...new Map(filteredPlans.map(plan => [plan['flat_type'], plan])).values()]; console.log(uniquePlans);
-  
   useEffect(() => {
     axios(`${baseUrl}/flats/?project=${projectId}`)
       .then(response => {
