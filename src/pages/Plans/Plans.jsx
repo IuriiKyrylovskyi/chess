@@ -17,7 +17,7 @@ import './styles.scss';
 const Plans = () => {
   const plans = useSelector(state => state.plansArr.plans);
   const projectId = useSelector(state => state.project.currentProjectId);
-  const buildingId = useSelector(state => state.building.currentBuildingId);
+  // const buildingId = useSelector(state => state.building.currentBuildingId);
   const sectionId = useSelector(state => state.section.currentSectionId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
