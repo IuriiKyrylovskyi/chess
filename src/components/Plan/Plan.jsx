@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { planActions } from '../../store/plan';
+import moment from 'moment';
 
 import './styles.scss';
 
@@ -20,8 +21,10 @@ const Plan = ({ props }) => {
     title,
   } = flat_type;
 
+  const created = moment(created_at).format('MMMM Do YYYY,  hh:mm');
+  const updated = moment(updated_at).format('MMMM Do YYYY, hh:mm');
   const dispatch = useDispatch();
-
+  console.log(created);
   const planType = title || 'plan type not given';
   const bgImage = img_main || img_extra || './images/add.png';
 
@@ -41,8 +44,8 @@ const Plan = ({ props }) => {
           <div className="plan__title">{`plan_type ${planType}`}</div>
           <div className="plan__price_m2">{`price_m2 ${price_m2}`}</div>
           <div className="plan__square_total_manual">{`square_total_manual ${square_total}`}</div>
-          <div className="plan__updated">{`created at ${created_at}`}</div>
-          <div className="plan__updated">{`updated at ${updated_at}`}</div>
+          <div className="plan__updated">{`created on ${created}`}</div>
+          <div className="plan__updated">{`updated on ${updated}`}</div>
           <div className="plan__project">{`project ${project}`}</div>
           <div className="plan__building">{`building ${building}`}</div>
           <div className="plan__section">{`section ${section}`}</div>
