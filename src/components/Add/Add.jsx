@@ -9,3 +9,4 @@ const Add = ({ text }) => {
 };
 
 export default Add;
+

@@ -64,7 +64,7 @@ const Sections = () => {
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/sections/add">
+        <NavLink to="/projects/add">
           <Add text={'секцию'} />
         </NavLink>
       </div>

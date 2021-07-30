@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <span className="navbar__logo">
-        <img src="./logo.jpeg" alt="utlandia" />
+        <img src="./images/logo.jpeg" alt="utlandia" />
       </span>
       <div className="navbar__logo">UTLANDIA</div>
       <div className="navbar__select">

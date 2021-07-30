@@ -60,7 +60,7 @@ const Buildings = () => {
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/buildings/building/add">
+        <NavLink to="/projects/add">
           <Add text={'дом'} />
         </NavLink>
       </div>

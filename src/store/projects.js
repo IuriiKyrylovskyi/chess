@@ -8,7 +8,7 @@ const projectsSlice = createSlice({
   name: 'projects',
   initialState: initialProjectsState,
   reducers: {
-    fetchProjects(state,action) {
+    fetchProjects(state, action) {
       const fetchProjectsData = action.payload;
       // console.log(fetchProjectsData);
       // state.projects = [...state.projects, ...fetchProjectsData];

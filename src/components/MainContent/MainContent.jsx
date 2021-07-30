@@ -9,7 +9,7 @@ import MainChess from '../MainChess/MainChess';
 import MainCards from '../MainCards/MainCards';
 import MainTable from '../MainTable/MainTable';
 import Edit from '../Edit/Edit';
-import Add from '../Add/Add';
+import AddPage from '../../pages/AddPage/AddPage';
 
 const MainContent = () => {
   return (
@@ -42,8 +42,8 @@ const MainContent = () => {
         <Route path="/edit">
           <Edit />
         </Route>
-        <Route path="/add">
-          <Add />
+        <Route path="/projects/add">
+          <AddPage />
         </Route>
       </Switch>
     </div>

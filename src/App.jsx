@@ -34,8 +34,8 @@ const App = () => {
       ) : ( */}
       <Router>
         <div className="wrapper">
-          {/* <p>{data}</p> */}
           <NavBar />
+          {/* <p>{data}</p> */}
           {!isAuthenticated && <Auth />}
           <Hero />
           <Notification />
