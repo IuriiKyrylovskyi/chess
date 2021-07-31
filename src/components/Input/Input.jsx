@@ -1,19 +1,24 @@
 import React from 'react';
+import { Field } from 'formik';
 
 import './styles.scss';
 
-const Input = ({ labelText, type, name, accept, className, value, onChange }) => {
+const Input = ({ labelText, type, as, name, accept, className, value, onChange, children }) => {
   return (
     <div className="input">
       <label htmlFor={name}>{labelText}</label>
-      <input
+      <Field
         type={type}
+        as={as}
         name={name}
         className={className}
         accept={accept}
         value={value}
+        // autoComplete={name}
         onChange={onChange}
-      />
+      >
+        {children}
+      </Field>
     </div>
   );
 };

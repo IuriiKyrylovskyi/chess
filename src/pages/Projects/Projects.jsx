@@ -102,12 +102,12 @@ const Projects = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
       {projects.map(project => (
-        <NavLink key={project.id} to={`/project/buildings`}>
+        <NavLink key={project.id} to={`/buildings`}>
           <Project props={project} />
         </NavLink>
       ))}
       {/* )} */}
-      <Link to={`/projects/add`}>
+      <Link to={`/project/add`}>
         <Add text={'проект'} />
       </Link>
     </div>

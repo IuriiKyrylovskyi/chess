@@ -14,8 +14,8 @@ import Add from '../../components/Add/Add';
 import './styles.scss';
 
 const Buildings = () => {
-  const buildings = useSelector(state => state.buildingsArr.buildings);
   const projectId = useSelector(state => state.project.currentProjectId);
+  const buildings = useSelector(state => state.buildingsArr.buildings);
   const dispatch = useDispatch();
 
   // console.log(buildings);
@@ -55,12 +55,12 @@ const Buildings = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
         {buildings.map(building => (
-          <NavLink key={building.id} to="/building/sections">
+          <NavLink key={building.id} to="/sections">
             <Building props={building} />
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/projects/add">
+        <NavLink to="/building/add">
           <Add text={'дом'} />
         </NavLink>
       </div>

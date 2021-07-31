@@ -1,63 +1,21 @@
-label,
 input {
   display: block;
-}
-label {
-  margin-top: 1rem;
-}
-
-input {
   width: 100%;
-  height: 31px;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  background-color: white;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 15px;
-  display: flex;
-  padding: 0 10px;
-  margin-bottom: 10px;
-
-  transition: background-color 240ms, box-shadow 240ms;
-
-  &.active {
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.34) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-      rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-      rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-  }
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-// [type="file"] {
-//   height: 0;
-//   width: 0;
-//   overflow: hidden;
-// }
-// [type="file"] + label {
-//   font-family: sans-serif;
-//   background: #f44336;
-//   padding: 10px 30px;
-//   border: 2px solid #f44336;
-//   border-radius: 3px;
-//   color: #fff;
-//   cursor: pointer;
-//   transition: all 0.2s;
-// }
-// [type="file"] + label:hover {
-//   background-color: #fff;
-//   color: #f44336;
-// }
-
-.input {
-  &__developer-logo {
-    // display: none;
-    width: 155px;
-    border: 2px dashed #333;
-    margin-bottom: 20px;
-  }
-  &__developer-logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgb(0, 0, 0, 0.08%), 0 0 8px rgb(102, 175, 233, 0.6);
 }

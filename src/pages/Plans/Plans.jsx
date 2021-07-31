@@ -63,12 +63,12 @@ const Plans = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
         {uniquePlans.map(plan => (
-          <NavLink key={plan.id} to="/plan/edit">
+          <NavLink key={plan.id} to="/">
             <Plan props={plan} />
           </NavLink>
         ))}
         {/* )} */}
-        <NavLink to="/plans/add">
+        <NavLink to="/plan/add">
           <Add text={'план'} />
         </NavLink>
       </div>

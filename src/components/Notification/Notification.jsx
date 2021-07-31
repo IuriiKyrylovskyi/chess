@@ -11,7 +11,7 @@ const Notification = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(notificationActions.hideNotification());
-    }, 5000);
+    }, 3000);
   }, [notification, dispatch]);
 
   if (!notification) {

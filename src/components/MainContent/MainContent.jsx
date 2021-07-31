@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
 import Projects from '../../pages/Projects/Projects';
 import Buildings from '../../pages/Buildings/Buildings';
 import Sections from '../../pages/Sections/Sections';
@@ -10,6 +11,10 @@ import MainCards from '../MainCards/MainCards';
 import MainTable from '../MainTable/MainTable';
 import Edit from '../Edit/Edit';
 import AddPage from '../../pages/AddPage/AddPage';
+import AddProject from '../../pages/AddProject/AddProject';
+import AddBuilding from '../../pages/AddBuilding/AddBuilding';
+import AddSection from '../../pages/AddSection/AddSection';
+import AddPlan from '../../pages/AddPlan/AddPlan';
 
 const MainContent = () => {
   return (
@@ -18,10 +23,10 @@ const MainContent = () => {
         <Route path="/" exact>
           <Projects />
         </Route>
-        <Route path="/project/buildings">
+        <Route path="/buildings">
           <Buildings />
         </Route>
-        <Route path="/building/sections">
+        <Route path="/sections">
           <Sections />
         </Route>
         <Route path="/plans">
@@ -42,8 +47,20 @@ const MainContent = () => {
         <Route path="/edit">
           <Edit />
         </Route>
-        <Route path="/projects/add">
+        {/* <Route path="/add">
           <AddPage />
+        </Route> */}
+        <Route path="/project/add">
+          <AddProject />
+        </Route>
+        <Route path="/building/add">
+          <AddBuilding />
+        </Route>
+        <Route path="/section/add">
+          <AddSection />
+        </Route>
+        <Route path="/plan/add">
+          <AddPlan />
         </Route>
       </Switch>
     </div>
