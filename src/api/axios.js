@@ -5,10 +5,12 @@ import { loadingActions } from './../store/loading';
 
 import { baseUrl } from './baseUrl';
 
-export const fetchBuildingsList = (dispatch, projectId, buildingsActions) => {
-  return axios(`${baseUrl}/projects/buildings/?project=${projectId}`)
+// export const fetchBuildingsList = (dispatch, projectId, buildingsActions) => {
+export const fetchData = (dispatch, urlPart, dataActionsReducer) => {
+  return axios(`${baseUrl}${urlPart}`)
     .then(response => {
-      dispatch(buildingsActions.fetchBuildings(response.data));
+      // dispatch(dataActions.fetchBuildings(response.data));
+      dispatch(dataActionsReducer(response.data));
       dispatch(
         notificationActions.showNotification({
           status: 'SUCCESS',
@@ -32,9 +34,9 @@ export const fetchBuildingsList = (dispatch, projectId, buildingsActions) => {
     });
 };
 
-export const postBuilding = (dispatch, projectId, building) => {
+export const postData = (dispatch, urlPart, data) => {
   return axios
-    .post(`${baseUrl}/projects/buildings/?project=${projectId}`, building)
+    .post(`${baseUrl}${urlPart}`, data)
     .then(response => {
       if (response.ok) {
         dispatch(

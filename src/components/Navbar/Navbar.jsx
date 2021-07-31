@@ -6,7 +6,7 @@ import './style.scss';
 import { GrClose } from 'react-icons/gr';
 import { CgSearch } from 'react-icons/cg';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import Button from '../Button/Button';
+import Button from '../common/Button/Button';
 
 const Navbar = () => {
   const dispatch = useDispatch();

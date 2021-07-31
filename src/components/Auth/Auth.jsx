@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth';
 
-import Button from '../Button/Button';
+import Button from '../common/Button/Button';
 
 import './styles.scss';
 

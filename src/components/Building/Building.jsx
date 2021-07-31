@@ -1,15 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { buildingActions } from '../../store/building';
 
+import CardWrap from '../common/CardWrap/CardWrap';
+
 import './styles.scss';
 
 const Building = ({ props }) => {
-  const { id, title, tech_types, stage_types } = props;
+  const { id, title, tech_types, stage_types, image } = props;
 
   const dispatch = useDispatch();
 
   const buildingTitle = title || 'title not given';
-  const bgImage = './images/add.png';
+  const bgImage = image || './images/add.png';
 
   console.log(props);
 
@@ -18,14 +20,12 @@ const Building = ({ props }) => {
   };
 
   return (
-    <div className="building"
-      onClick={handleClick}
-    >
-      <div className="building__wrapper" style={{ backgroundImage: `url(${bgImage})` }}>
+    <div className="building" onClick={handleClick}>
+      <CardWrap style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="building__title">{`Дом: ${buildingTitle}`}</div>
         <div className="building__tech">{tech_types}</div>
         <div className="building__stage">{stage_types}</div>
-      </div>
+      </CardWrap>
     </div>
   );
 };

@@ -12,11 +12,11 @@ import { Formik, useFormik, Form, useFormikContext } from 'formik';
 
 // import Building from '../../components/Building/Building';
 
-import Input from '../../components/Input/Input';
+import Input from '../../components/common/Input/Input';
 
 import '../../components/common/common.scss';
 
-const AddPlan = () => {
+const AddType = () => {
   const formik = useFormik({
     initialValues: {
       building: 3,
@@ -40,7 +40,7 @@ const AddPlan = () => {
 
   return (
     <div className="addpage">
-      <h1 className="addpage__title">Add plan</h1>
+      <h1 className="addpage__title">Add type</h1>
       <div className="addpage__content">
         <Formik
         // initialValues={initialValues}
@@ -155,4 +155,4 @@ const AddPlan = () => {
   );
 };
 
-export default AddPlan;
+export default AddType;

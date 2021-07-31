@@ -2,69 +2,54 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { buildingsActions } from '../../store/buildings';
-import { notificationActions } from '../../store/notification';
-import { loadingActions } from '../../store/loading';
-import axios from 'axios';
 
-import { baseUrl } from '../../api/baseUrl';
+import { fetchData } from '../../api/axios';
+import { leftUrlParts } from '../../api/baseUrl';
 
+import Wrap from '../../components/common/Wrap/Wrap';
 import Building from '../../components/Building/Building';
 import Add from '../../components/Add/Add';
 
 import './styles.scss';
+import CardWrap from '../../components/common/CardWrap/CardWrap';
 
 const Buildings = () => {
   const projectId = useSelector(state => state.project.currentProjectId);
   const buildings = useSelector(state => state.buildingsArr.buildings);
   const dispatch = useDispatch();
+  const fetchUrlPart = leftUrlParts.buildings + projectId;
+  const dataActionsReducer = buildingsActions.fetchBuildings;
 
   // console.log(buildings);
 
+  const bgImageAdd = './images/projects/main_cropped.jpg';
+
   useEffect(() => {
-    axios(`${baseUrl}/projects/buildings/?project=${projectId}`)
-      .then(response => {
-        dispatch(buildingsActions.fetchBuildings(response.data));
-        dispatch(
-          notificationActions.showNotification({
-            status: 'SUCCESS',
-            title: 'Success',
-            message: "Data's loaded successfully",
-          }),
-        );
-      })
-      .catch(error => {
-        console.error('Error fetching data: ', error);
-        dispatch(
-          notificationActions.showNotification({
-            status: 'ERROR',
-            title: 'Error',
-            message: 'Failed to load data',
-          }),
-        );
-      })
-      .finally(() => {
-        dispatch(loadingActions.loaded());
-      });
-  }, [dispatch, projectId]);
+    fetchData(dispatch, fetchUrlPart, dataActionsReducer);
+  }, [dispatch, fetchUrlPart, dataActionsReducer]);
 
   return (
-    <div className="buildings">
+    <Wrap>
       <h1 className="buildings__title">{`Project ${projectId}/ buildings`}</h1>
-      <div className="buildings__content">
+      <Wrap>
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
         {buildings.map(building => (
           <NavLink key={building.id} to="/sections">
-            <Building props={building} />
+            <CardWrap cardBgImage={building.image || '#f3e357'}>
+              <Building props={building} />
+            </CardWrap>
           </NavLink>
         ))}
         {/* )} */}
         <NavLink to="/building/add">
-          <Add text={'дом'} />
+          <CardWrap cardBgImage={{ bgImageAdd }}>
+            <Add text={'дом'} />
+          </CardWrap>
         </NavLink>
-      </div>
-    </div>
+      </Wrap>
+    </Wrap>
   );
 };
 

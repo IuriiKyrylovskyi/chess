@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Projects from '../../pages/Projects/Projects';
 import Buildings from '../../pages/Buildings/Buildings';
 import Sections from '../../pages/Sections/Sections';
-import Plans from '../../pages/Plans/Plans';
+import Types from '../../pages/Types/Types';
 import Flats from '../../pages/Flats/Flats';
 import MainChess from '../MainChess/MainChess';
 import MainCards from '../MainCards/MainCards';
@@ -14,7 +14,7 @@ import AddPage from '../../pages/AddPage/AddPage';
 import AddProject from '../../pages/AddProject/AddProject';
 import AddBuilding from '../../pages/AddBuilding/AddBuilding';
 import AddSection from '../../pages/AddSection/AddSection';
-import AddPlan from '../../pages/AddPlan/AddPlan';
+import AddType from '../../pages/AddType/AddType';
 
 const MainContent = () => {
   return (
@@ -29,8 +29,8 @@ const MainContent = () => {
         <Route path="/sections">
           <Sections />
         </Route>
-        <Route path="/plans">
-          <Plans />
+        <Route path="/types">
+          <Types />
         </Route>
         <Route path="/flats">
           <Flats />
@@ -59,8 +59,8 @@ const MainContent = () => {
         <Route path="/section/add">
           <AddSection />
         </Route>
-        <Route path="/plan/add">
-          <AddPlan />
+        <Route path="/type/add">
+          <AddType />
         </Route>
       </Switch>
     </div>

@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { sectionActions } from '../../store/section';
 
+import CardWrap from '../common/CardWrap/CardWrap';
+
 import './styles.scss';
 
 const Section = ({ props }) => {
@@ -19,9 +21,9 @@ const Section = ({ props }) => {
 
   return (
     <div className="section" onClick={handleClick}>
-      <div className="section__wrapper" style={{ backgroundImage: `url(${bgImage})` }}>
+      <CardWrap style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="section__title">{`Building ${building} Секция: ${sectionTitle}`}</div>
-      </div>
+      </CardWrap>
     </div>
   );
 };

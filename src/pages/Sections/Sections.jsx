@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { sectionsActions } from '../../store/sections';
-import { notificationActions } from '../../store/notification';
-import { loadingActions } from '../../store/loading';
-import axios from 'axios';
 
-import { baseUrl } from '../../api/baseUrl';
+import { fetchData } from '../../api/axios';
+import { leftUrlParts } from '../../api/baseUrl';
 
 import Section from '../../components/Section/Section';
 import Add from '../../components/Add/Add';
 
 import './styles.scss';
+import CardWrap from '../../components/common/CardWrap/CardWrap';
+import Wrap from '../../components/common/Wrap/Wrap';
 
 const Sections = () => {
   const sections = useSelector(state => state.sectionsArr.sections);
@@ -19,56 +19,42 @@ const Sections = () => {
   const buildingId = useSelector(state => state.building.currentBuildingId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
+  const fetchUrlPart = leftUrlParts.sections + projectId;
+  const dataActionsReducer = sectionsActions.fetchSections;
 
   console.log(sections);
 
+  const bgImageAdd = './images/projects/main_cropped.jpg';
+
   const filteredSections = sections.filter(section => section.building === buildingId);
   console.log(filteredSections);
+  
   useEffect(() => {
-    axios(`${baseUrl}/projects/sections/?project=${projectId}`)
-      .then(response => {
-        dispatch(sectionsActions.fetchSections(response.data));
-        dispatch(
-          notificationActions.showNotification({
-            status: 'SUCCESS',
-            title: 'Success',
-            message: "Data's loaded successfully",
-          }),
-        );
-      })
-      .catch(error => {
-        console.error('Error fetching data: ', error);
-        dispatch(
-          notificationActions.showNotification({
-            status: 'ERROR',
-            title: 'Error',
-            message: 'Failed to load data',
-          }),
-        );
-      })
-      .finally(() => {
-        dispatch(loadingActions.loaded());
-      });
-  }, [dispatch, projectId]);
+    fetchData(dispatch, fetchUrlPart, dataActionsReducer);
+  }, [dispatch, fetchUrlPart, dataActionsReducer]);
 
   return (
-    <div className="sections">
+    <Wrap>
       <h1 className="sections__title">{`Project ${projectId}/ Building ${buildingName}/ sections`}</h1>
-      <div className="sections__content">
+      <Wrap>
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
         {filteredSections.map(section => (
-          <NavLink key={section.id} to="/plans">
-            <Section props={section} />
+          <NavLink key={section.id} to="/types">
+            <CardWrap>
+              <Section props={section} />
+            </CardWrap>
           </NavLink>
         ))}
         {/* )} */}
         <NavLink to="/section/add">
-          <Add text={'секцию'} />
+          <CardWrap cardBgImage={{ bgImageAdd }}>
+            <Add text={'секцию'} />
+          </CardWrap>
         </NavLink>
-      </div>
-    </div>
+      </Wrap>
+    </Wrap>
   );
 };
 

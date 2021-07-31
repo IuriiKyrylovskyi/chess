@@ -1,0 +1,14 @@
+.wrap {
+  display: flex;
+  // justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  a {
+    margin: 25px; // height: 100%;
+  }
+}

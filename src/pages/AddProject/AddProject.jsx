@@ -1,84 +1,104 @@
-import React, { useEffect } from 'react';
-import { Formik, useFormik, Form, useFormikContext } from 'formik';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik, Form } from 'formik';
 
-// import { NavLink } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addpageActions } from '../../store/addpage';
-// import { notificationActions } from '../../store/notification';
-// import { loadingActions } from '../../store/loading';
-// import axios from 'axios';
+import { postData } from '../../api/axios';
+import { leftUrlParts } from '../../api/baseUrl';
 
-// import { baseUrl } from '../../api/baseUrl';
-
-// import Building from '../../components/Building/Building';
-
-import Input from '../../components/Input/Input';
+import Wrap from '../../components/common/Wrap/Wrap';
+import Input from '../../components/common/Input/Input';
 
 import '../../components/common/common.scss';
 
 const AddProject = () => {
-  const formik = useFormik({
-    initialValues: {
-      address_sales_dep: '',
-      city: '',
-      country: '',
-      developer: '',
-      developer_logo: '',
-      id: 1,
-      owner: 1,
-      phone_sales_dep: '',
-      project_img: '',
-      project_logo: '',
-      site: '',
-      title: 'Utlandia',
-    },
+  const dispatch = useDispatch();
+  const partUrl = leftUrlParts.projects;
 
-    onSubmit(values) {
-      // Do stuff here...
-    },
-  });
+  const initialValues = {
+    address_sales_dep: '',
+    city: '',
+    country: '',
+    developer: '',
+    project: 0,
+    developer_logo: '',
+    id: 0,
+    owner: 1,
+    phone_sales_dep: '',
+    project_img: '',
+    project_logo: '',
+    site: '',
+    title: 'Utlandia',
+  };
+
+  const onSubmit = values => {
+    alert(JSON.stringify(values, null, 2));
+    const data = {
+      address_sales_dep: values.address_sales_dep,
+      city: values.city,
+      country: values.country,
+      developer: values.developer,
+      project: values.project,
+      developer_logo: values.developer_logo,
+      id: values.id,
+      owner: 1,
+      phone_sales_dep: values.phone_sales_dep,
+      project_img: values.project_img,
+      project_logo: values.project_logo,
+      site: values.site,
+      title: values.title,
+    };
+    console.log(data);
+    console.log(partUrl);
+    postData(dispatch, partUrl, data);
+  };
 
   return (
-    <div className="addpage">
+    <Wrap>
       <h1 className="addpage__title">Add project</h1>
       <div className="addpage__content">
-        <Formik
-        // initialValues={initialValues}
-        // onSubmit={async values => alert(JSON.stringify(values, null, 2))}
-        >
-          <div className="section">
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            /* and other goodies */
+          }) => (
             <Form>
               <Input
                 labelText={'address_sales_dep'}
                 type="text"
                 name="address_sales_dep"
                 className="input__sales-dep"
-                value={formik.values.address_sales_dep}
-                onChange={formik.handleChange}
+                value={values.address_sales_dep}
+                onChange={handleChange}
               />
               <Input
                 labelText={'city'}
                 type="text"
-                name="address_sales_dep"
+                name="city"
                 className="input__city"
-                value={formik.values.city}
-                onChange={formik.handleChange}
+                value={values.city}
+                onChange={handleChange}
               />
               <Input
                 labelText={'country'}
                 type="text"
                 name="country"
                 className="input__country"
-                value={formik.values.country}
-                onChange={formik.handleChange}
+                value={values.country}
+                onChange={handleChange}
               />
               <Input
                 labelText={'developer'}
                 type="text"
                 name="developer"
                 className="input__developer"
-                value={formik.values.developer}
-                onChange={formik.handleChange}
+                value={values.developer}
+                onChange={handleChange}
               />
               <Input
                 labelText={'developer_logo'}
@@ -86,32 +106,41 @@ const AddProject = () => {
                 name="developer_logo"
                 accept=".jpeg,.jpg,.png,.svg"
                 className="input__developer_logo"
-                value={formik.values.developer_logo}
-                onChange={formik.handleChange}
+                value={values.developer_logo}
+                onChange={handleChange}
+              />
+              <Input
+                labelText={'project'}
+                type="number"
+                name="project"
+                className="input__project"
+                value={values.project}
+                onChange={handleChange}
+                disabled={true}
               />
               <Input
                 labelText={'id'}
-                type="text"
+                type="number"
                 name="id"
                 className="input__id"
-                value={formik.values.id}
-                onChange={formik.handleChange}
+                value={values.id}
+                onChange={handleChange}
               />
               <Input
                 labelText={'owner'}
-                type="text"
+                type="number"
                 name="owner"
                 className="input__owner"
-                value={formik.values.owner}
-                onChange={formik.handleChange}
+                value={values.owner}
+                onChange={handleChange}
               />
               <Input
                 labelText={'phone_sales_dep'}
                 type="tel"
                 name="phone_sales_dep"
                 className="input__phone_sales_dep"
-                value={formik.values.phone_sales_dep}
-                onChange={formik.handleChange}
+                value={values.phone_sales_dep}
+                onChange={handleChange}
               />
               <Input
                 labelText={'project_img'}
@@ -119,8 +148,8 @@ const AddProject = () => {
                 name="project_img"
                 accept=".jpeg,.jpg,.png,.svg"
                 className="input__project_img"
-                value={formik.values.project_img}
-                onChange={formik.handleChange}
+                value={values.project_img}
+                onChange={handleChange}
               />
               <Input
                 labelText={'project_logo'}
@@ -128,31 +157,31 @@ const AddProject = () => {
                 name="project_logo"
                 accept=".jpeg,.jpg,.png,.svg"
                 className="input__project_logo"
-                value={formik.values.project_logo}
-                onChange={formik.handleChange}
+                value={values.project_logo}
+                onChange={handleChange}
               />
               <Input
                 labelText={'site'}
                 type="url"
                 name="site"
                 className="input__site"
-                value={formik.values.site}
-                onChange={formik.handleChange}
+                value={values.site}
+                onChange={handleChange}
               />
               <Input
                 labelText={'title'}
                 type="text"
                 name="title"
                 className="input__title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
+                value={values.title}
+                onChange={handleChange}
               />
               <button type="submit">Submit</button>
             </Form>
-          </div>
+          )}
         </Formik>
       </div>
-    </div>
+    </Wrap>
   );
 };
 

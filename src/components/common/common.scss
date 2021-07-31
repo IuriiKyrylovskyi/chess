@@ -1,40 +1,36 @@
-.addpage {
+.title {
+  margin: 30px;
+}
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 50px;
-  &__title {
-    margin: 30px;
+  a {
+    flex: 0 0 31%;
+    width: 31%;
+    min-height: 200px;
   }
-  &__content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    a {
-      flex: 0 0 31%;
-      width: 31%;
-      min-height: 200px;
-    }
+}
+
+button[type="submit"] {
+  background-color: #1aaa55;
+  color: white;
+  cursor: pointer;
+  padding: 10px 8px;
+  border-radius: 4px;
+  border: 1px solid #1aaa55;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-top: 20px;
+  transition: all 0.3s linear;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
-
-  button[type="submit"] {
-    background-color: #1aaa55;
-    color: white;
-    cursor: pointer;
-    padding: 10px 8px;
-    border-radius: 4px;
-    border: 1px solid #1aaa55;
-    font-size: 16px;
-    text-transform: capitalize;
-    margin-top: 20px;
-    transition: all 0.3s linear;
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    &:hover {
-      background-color: #2666c5;
-    }
+  &:hover {
+    background-color: #2666c5;
   }
 }

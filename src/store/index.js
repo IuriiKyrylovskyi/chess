@@ -7,8 +7,8 @@ import buildingsSlice from './buildings';
 import currentBuildingSlice from './building';
 import sectionsSlice from './sections';
 import currentSectionSlice from './section';
-import plansSlice from './plans';
-import currentPlanSlice from './plan';
+import typesSlice from './types';
+import currentTypeSlice from './type';
 import flatsSlice from './flats';
 import currentFlatSlice from './flat';
 import notificationSlice from './notification';
@@ -23,8 +23,8 @@ const store = configureStore({
     building: currentBuildingSlice.reducer,
     sectionsArr: sectionsSlice.reducer,
     section: currentSectionSlice.reducer,
-    plansArr: plansSlice.reducer,
-    plan: currentPlanSlice.reducer,
+    typesArr: typesSlice.reducer,
+    type: currentTypeSlice.reducer,
     flatsArr: flatsSlice.reducer,
     flat: currentFlatSlice.reducer,
     notification: notificationSlice.reducer,

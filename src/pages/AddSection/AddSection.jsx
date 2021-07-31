@@ -1,86 +1,96 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, useFormik, Form, useFormikContext } from 'formik';
+import { Formik, Form } from 'formik';
 
-// import { NavLink } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addpageActions } from '../../store/addpage';
-// import { notificationActions } from '../../store/notification';
-// import { loadingActions } from '../../store/loading';
-// import axios from 'axios';
+import { postData } from '../../api/axios';
+import { leftUrlParts } from '../../api/baseUrl';
 
-// import { baseUrl } from '../../api/baseUrl';
-
-// import Building from '../../components/Building/Building';
-
-import Input from '../../components/Input/Input';
+import Wrap from '../../components/common/Wrap/Wrap';
+import Input from '../../components/common/Input/Input';
 
 import '../../components/common/common.scss';
 
 const AddSection = () => {
-   const projectId = useSelector(state => state.project.currentProjectId);
-   const buildingtId = useSelector(state => state.building.currentBuildingId);
- 
-  const formik = useFormik({
-    initialValues: {
-      building: 0,
-      id: buildingtId,
-      project: projectId,
-      title: '2',
-    },
+  const projectId = useSelector(state => state.project.currentProjectId);
+  const buildingtId = useSelector(state => state.building.currentBuildingId);
 
-    onSubmit(values) {
-    },
-  });
+  const dispatch = useDispatch();
+  const partUrl = leftUrlParts.sections + projectId;
+
+  const initialValues = {
+    building: 0,
+    id: buildingtId,
+    project: projectId,
+    title: 'section',
+  };
+
+  const onSubmit = values => {
+    alert(JSON.stringify(values, null, 2));
+    const data = {
+      building: values.id,
+      id: values.id,
+      project: projectId,
+      title: values.title,
+    };
+    console.log(data);
+    console.log(partUrl);
+    postData(dispatch, partUrl, data);
+  };
 
   return (
-    <div className="addpage">
+    <Wrap>
       <h1 className="addpage__title">Add section</h1>
       <div className="addpage__content">
-        <Formik
-        // initialValues={initialValues}
-        // onSubmit={async values => alert(JSON.stringify(values, null, 2))}
-        >
-          <div className="section">
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            /* and other goodies */
+          }) => (
             <Form>
               <Input
                 labelText={'building'}
                 type="text"
                 name="building"
                 className="input__building"
-                value={formik.values.building}
-                onChange={formik.handleChange}
+                value={values.building}
+                onChange={handleChange}
               />
               <Input
                 labelText={'id'}
                 type="text"
                 name="id"
                 className="input__id"
-                value={formik.values.id}
-                onChange={formik.handleChange}
+                value={values.id}
+                onChange={handleChange}
               />
               <Input
                 labelText={'project'}
                 type="text"
                 name="project"
                 className="input__project"
-                value={formik.values.project}
-                onChange={formik.handleChange}
+                value={values.project}
+                onChange={handleChange}
               />
               <Input
                 labelText={'title'}
                 type="text"
                 name="title"
                 className="input__title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
+                value={values.title}
+                onChange={handleChange}
               />
               <button type="submit">Submit</button>
             </Form>
-          </div>
+          )}
         </Formik>
       </div>
-    </div>
+    </Wrap>
   );
 };
 
