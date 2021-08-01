@@ -10,7 +10,7 @@ import MainChess from '../MainChess/MainChess';
 import MainCards from '../MainCards/MainCards';
 import MainTable from '../MainTable/MainTable';
 import Edit from '../Edit/Edit';
-import AddPage from '../../pages/AddPage/AddPage';
+// import AddPage from '../../pages/AddPage/AddPage';
 import AddProject from '../../pages/AddProject/AddProject';
 import AddBuilding from '../../pages/AddBuilding/AddBuilding';
 import AddSection from '../../pages/AddSection/AddSection';

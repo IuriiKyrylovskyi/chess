@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { projectsActions } from '../../store/projects';
 
@@ -33,19 +33,18 @@ const Projects = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
       {projects.map(project => (
-        <NavLink key={project.id} to={`/buildings`}>
-          <CardWrap>
+        <Link to={`/buildings`}>
+          <CardWrap key={project.id}>
             <Project props={project} />
           </CardWrap>
-        </NavLink>
+        </Link>
       ))}
       {/* )} */}
-
-      <NavLink to={`/project/add`}>
+      <Link to={`/project/add`}>
         <CardWrap cardBgImage={{ bgImageAdd }}>
           <Add text={'проект'} />
         </CardWrap>
-      </NavLink>
+      </Link>
     </Wrap>
   );
 };

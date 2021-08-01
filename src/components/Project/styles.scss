@@ -55,8 +55,12 @@
   }
 
   &__link {
+    cursor: pointer;
     span {
       color: #000;
+      &:hover{
+        color: rgb(0, 0, 255);
+      }
     }
   }
 }

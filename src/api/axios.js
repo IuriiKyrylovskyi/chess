@@ -34,7 +34,7 @@ export const fetchData = (dispatch, urlPart, dataActionsReducer) => {
     });
 };
 
-export const postData = (dispatch, urlPart, data) => {
+export const postData = (dispatch, urlPart, history, data) => {
   return axios
     .post(`${baseUrl}${urlPart}`, data)
     .then(response => {
@@ -46,6 +46,7 @@ export const postData = (dispatch, urlPart, data) => {
             message: "Data's saved successfully",
           }),
         );
+        history.push(urlPart);
       }
     })
     .catch(error => {

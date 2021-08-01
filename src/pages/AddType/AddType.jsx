@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { postData } from '../../api/axios';
 import { leftUrlParts } from '../../api/baseUrl';
@@ -14,6 +15,7 @@ const AddType = () => {
   const buildingId = useSelector(state => state.building.currentBuildingId);
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const partUrl = leftUrlParts.types + projectId;
 
   const initialValues = {
@@ -49,7 +51,7 @@ const AddType = () => {
     };
     console.log(data);
     console.log(partUrl);
-    postData(dispatch, partUrl, data);
+    postData(dispatch, partUrl, history, data);
   };
 
   return (
