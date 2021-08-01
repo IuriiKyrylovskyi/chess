@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { buildingsActions } from '../../store/buildings';
 
-import { fetchData } from '../../api/axios';
-import { leftUrlParts } from '../../api/baseUrl';
+import { fetchData } from '../../lib/api';
+import { leftUrlParts } from '../../lib/baseUrl';
 
 import Wrap from '../../components/common/Wrap/Wrap';
 import Building from '../../components/Building/Building';

@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { typesActions } from '../../store/types';
 
-import { fetchData } from '../../api/axios';
-import { leftUrlParts } from '../../api/baseUrl';
+import { fetchData } from '../../lib/api';
+import { leftUrlParts } from '../../lib/baseUrl';
 
 import { arrayUniqueByKey } from '../../functions/functions';
 

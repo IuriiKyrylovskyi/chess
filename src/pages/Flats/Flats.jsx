@@ -6,7 +6,7 @@ import { notificationActions } from '../../store/notification';
 import { loadingActions } from '../../store/loading';
 import axios from 'axios';
 
-import { baseUrl } from '../../api/baseUrl';
+import { baseUrl } from '../../lib/baseUrl';
 
 import Flat from '../../components/Flat/Flat';
 import Add from '../../components/Add/Add';

@@ -3,8 +3,8 @@ import { Formik, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { postData } from '../../api/axios';
-import { leftUrlParts } from '../../api/baseUrl';
+import { postData } from '../../lib/api';
+import { leftUrlParts } from '../../lib/baseUrl';
 
 import Input from '../../components/common/Input/Input';
 

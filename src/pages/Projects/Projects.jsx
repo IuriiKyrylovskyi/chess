@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { projectsActions } from '../../store/projects';
 
-import { fetchData } from '../../api/axios';
-import { leftUrlParts } from '../../api/baseUrl';
+import { fetchData } from '../../lib/api';
+import { leftUrlParts } from '../../lib/baseUrl';
 
 import Wrap from '../../components/common/Wrap/Wrap';
 import Project from '../../components/Project/Project';
