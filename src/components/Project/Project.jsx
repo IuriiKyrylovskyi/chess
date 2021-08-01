@@ -34,12 +34,12 @@ const Project = ({ props }) => {
           <div className="project__title">ЖК {projectTitle}</div>
           <div className="project__logo">{logo}</div>
           <div className="project__adress">{`${address || "adress isn't given"}`}</div>
-          <Link to={projectSite} target="_blank" className="project__link">
+          <a href={projectSite} target="_blank" rel="noreferrer" className="project__link">
             <span>
               site:
               {projectSite}
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

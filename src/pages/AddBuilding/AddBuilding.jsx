@@ -5,17 +5,6 @@ import { Formik, Form } from 'formik';
 import { postData } from '../../api/axios';
 import { leftUrlParts } from '../../api/baseUrl';
 
-// import { NavLink } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addpageActions } from '../../store/addpage';
-// import { notificationActions } from '../../store/notification';
-// import { loadingActions } from '../../store/loading';
-// import axios from 'axios';
-
-// import { baseUrl } from '../../api/baseUrl';
-
-// import Building from '../../components/Building/Building';
-
 import Wrap from '../../components/common/Wrap/Wrap';
 import Input from '../../components/common/Input/Input';
 
@@ -25,7 +14,7 @@ const AddBuilding = () => {
   const projectId = useSelector(state => state.project.currentProjectId);
 
   const dispatch = useDispatch();
-  const partUrl = leftUrlParts.buildings + projectId;
+  const partUrl = leftUrlParts.types + projectId;
 
   const initialValues = {
     id: 0,
@@ -96,7 +85,6 @@ const AddBuilding = () => {
                   <option value="BUILT">BUILT</option>
                   <option value="COMMISSIONED">COMMISSIONED</option>
                 </Input>
-
                 <Input
                   labelText={'tech_types'}
                   as="select"

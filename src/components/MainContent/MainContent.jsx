@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Projects from '../../pages/Projects/Projects';
 import Buildings from '../../pages/Buildings/Buildings';
@@ -15,12 +15,16 @@ import AddProject from '../../pages/AddProject/AddProject';
 import AddBuilding from '../../pages/AddBuilding/AddBuilding';
 import AddSection from '../../pages/AddSection/AddSection';
 import AddType from '../../pages/AddType/AddType';
+import NotFound from '../../pages/NotFound/NotFound';
 
 const MainContent = () => {
   return (
     <div className="main__content">
       <Switch>
         <Route path="/" exact>
+          <Redirect to="/projects" />
+        </Route>
+        <Route path="/projects">
           <Projects />
         </Route>
         <Route path="/buildings">
@@ -61,6 +65,9 @@ const MainContent = () => {
         </Route>
         <Route path="/type/add">
           <AddType />
+        </Route>
+        <Route path="*">
+          <NotFound />
         </Route>
       </Switch>
     </div>
