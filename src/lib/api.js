@@ -63,3 +63,32 @@ export const postData = (dispatch, urlPart, history, data) => {
       dispatch(loadingActions.loaded());
     });
 };
+
+export const deleteData = (dispatch, urlPart, id) => {
+  return axios
+    .delete(`${baseUrl}${urlPart}${id}`)
+    .then(response => {
+      if (response.ok) {
+        dispatch(
+          notificationActions.showNotification({
+            status: 'SUCCESS',
+            title: 'Success',
+            message: "Data's been deleted successfully",
+          }),
+        );
+      }
+    })
+    .catch(error => {
+      console.error('Error on deleting data: ', error);
+      dispatch(
+        notificationActions.showNotification({
+          status: 'ERROR',
+          title: 'Error',
+          message: 'Failed to delete data',
+        }),
+      );
+    })
+    .finally(() => {
+      dispatch(loadingActions.loaded());
+    });
+};

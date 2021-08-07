@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import { projectActions } from '../../store/project';
 
 import './styles.scss';
@@ -19,6 +19,7 @@ const Project = ({ props }) => {
   const handleClick = () => {
     dispatch(projectActions.getCurrentProjectId(id));
   };
+
   return (
     <div
       className="project"
@@ -26,21 +27,21 @@ const Project = ({ props }) => {
       //
     >
       <div className="project__wrapper">
-        <div className="project__image-box" style={{ backgroundImage: `url(${bgImage})` }}>
-          <div className="project__flats-total">{'255'} flats</div>
-          <div className="project__number">{`Project # ${id}`}</div>
-        </div>
-        <div className="project__content">
-          <div className="project__title">ЖК {projectTitle}</div>
-          <div className="project__logo">{logo}</div>
-          <div className="project__adress">{`${address || "adress isn't given"}`}</div>
-          <a href={projectSite} target="_blank" rel="noreferrer" className="project__link">
-            <span>
-              site:
-              {projectSite}
-            </span>
-          </a>
-        </div>
+          <div className="project__image-box" style={{ backgroundImage: `url(${bgImage})` }}>
+            <div className="project__flats-total">{'255'} flats</div>
+            <div className="project__number">{`Project # ${id}`}</div>
+          </div>
+          <div className="project__content">
+            <div className="project__title">ЖК {projectTitle}</div>
+            <div className="project__logo">{logo}</div>
+            <div className="project__adress">{`${address || "adress isn't given"}`}</div>
+            <a href={projectSite} target="_blank" rel="noreferrer" className="project__link">
+              <span>
+                site:
+                {projectSite}
+              </span>
+            </a>
+          </div>
       </div>
     </div>
   );

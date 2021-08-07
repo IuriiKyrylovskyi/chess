@@ -21,10 +21,10 @@ const AddProject = () => {
     city: '',
     country: '',
     developer: '',
-    project: 0,
+    // project: 0,
     developer_logo: '',
-    id: 0,
-    owner: 1,
+    // id: 0,
+    // owner: 1,
     phone_sales_dep: '',
     project_img: '',
     project_logo: '',
@@ -39,12 +39,12 @@ const AddProject = () => {
       city: values.city,
       country: values.country,
       developer: values.developer,
-      project: values.project,
+      // project: values.project,
       developer_logo: values.developer_logo,
-      id: values.id,
-      owner: 1,
+      // id: values.id,
+      // owner: 1,
       phone_sales_dep: values.phone_sales_dep,
-      project_img: values.project_img,
+      project_img: values.project_img === '' ? null : values.project_img,
       project_logo: values.project_logo,
       site: values.site,
       title: values.title,
@@ -111,7 +111,7 @@ const AddProject = () => {
                 value={values.developer_logo}
                 onChange={handleChange}
               />
-              <Input
+              {/* <Input
                 labelText={'project'}
                 type="number"
                 name="project"
@@ -119,23 +119,23 @@ const AddProject = () => {
                 value={values.project}
                 onChange={handleChange}
                 disabled={true}
-              />
-              <Input
+              /> */}
+              {/* <Input
                 labelText={'id'}
                 type="number"
                 name="id"
                 className="input__id"
                 value={values.id}
                 onChange={handleChange}
-              />
-              <Input
+              /> */}
+              {/* <Input
                 labelText={'owner'}
                 type="number"
                 name="owner"
                 className="input__owner"
                 value={values.owner}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'phone_sales_dep'}
                 type="tel"

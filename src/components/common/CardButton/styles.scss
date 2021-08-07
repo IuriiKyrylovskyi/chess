@@ -1,0 +1,26 @@
+.card-button {
+  &__wrapper {
+    margin: 15px;
+  }
+
+  &__button {
+    background-color: #f53c3c;
+    color: white;
+    cursor: pointer;
+    padding: 10px 8px;
+    border-radius: 4px;
+    border: 1px solid #1aaa55;
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-top: 20px;
+    transition: all 0.3s linear;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    &:hover {
+      background-color: #2666c5;
+    }
+  }
+}
