@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { postData } from '../../lib/api';
 import { leftUrlParts } from '../../lib/baseUrl';
@@ -14,44 +14,45 @@ import '../../components/common/common.scss';
 const AddProject = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const params = useParams();
   const partUrl = leftUrlParts.projects;
+  const urlPartBack = '';
 
   const initialValues = {
+    title: 'Utlandia',
     address_sales_dep: '',
     city: '',
     country: '',
     developer: '',
     // project: 0,
-    developer_logo: '',
-    // id: 0,
-    // owner: 1,
+    developer_logo: null,
     phone_sales_dep: '',
-    project_img: '',
-    project_logo: '',
+    project_img: null,
+    project_logo: null,
     site: '',
-    title: 'Utlandia',
   };
 
   const onSubmit = values => {
     alert(JSON.stringify(values, null, 2));
-    const data = {
-      address_sales_dep: values.address_sales_dep,
-      city: values.city,
-      country: values.country,
-      developer: values.developer,
-      // project: values.project,
-      developer_logo: values.developer_logo,
-      // id: values.id,
-      // owner: 1,
-      phone_sales_dep: values.phone_sales_dep,
-      project_img: values.project_img === '' ? null : values.project_img,
-      project_logo: values.project_logo,
-      site: values.site,
-      title: values.title,
-    };
-    console.log(data);
+
+    const formData = new FormData();
+
+    formData.append('title', values.title);
+    formData.append('developer', values.developer);
+    if (values.file) formData.append('developer_logo', values.developer_logo);
+    if (values.file) formData.append('project_logo', values.project_logo);
+    if (values.file) formData.append('project_img', values.project_img);
+    formData.append('city', values.city);
+    formData.append('country', values.country);
+    formData.append('address', values.address);
+    formData.append('address_sales_dep', values.address_sales_dep);
+    formData.append('phone_sales_dep', values.phone_sales_dep);
+    if (values.site.length) formData.append('site', values.site);
+
+    console.log(history.goBack());
+    console.log(params);
     console.log(partUrl);
-    postData(dispatch, partUrl, history, data);
+    postData(dispatch, partUrl, history, formData);
   };
 
   return (

@@ -16,28 +16,28 @@ const AddBuilding = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const partUrl = leftUrlParts.types + projectId;
+  const partUrl = leftUrlParts.buildings;
 
   const initialValues = {
-    id: 0,
+    // id: 0,
     project: projectId,
     stage_types: '',
     tech_types: 'MONOLITHIC',
-    title: '1',
+    title: 'Building ',
   };
 
   const onSubmit = async values => {
     alert(JSON.stringify(values, null, 2));
     const data = {
-      id: values.id,
+      // id: values.id,
       project: projectId,
       stage_types: values.stage_types,
       tech_types: values.tech_types,
       title: values.title,
     };
     console.log(data);
-    console.log(partUrl);
-    postData(dispatch, partUrl, history, data);
+    // console.log(history.goBack());
+    postData(dispatch, partUrl, history, data, projectId);
   };
 
   return (
@@ -59,21 +59,12 @@ const AddBuilding = () => {
             }) => (
               <Form>
                 <Input
-                  labelText={'id'}
-                  type="number"
-                  name="id"
-                  className="input__id"
-                  value={values.id}
+                  labelText={'title'}
+                  type="text"
+                  name="title"
+                  className="input__title"
+                  value={values.title}
                   onChange={handleChange}
-                />
-                <Input
-                  labelText={'project'}
-                  type="number"
-                  name="project"
-                  className="input__project"
-                  value={values.project}
-                  onChange={handleChange}
-                  disabled={true}
                 />
                 <Input
                   labelText={'stage_types'}
@@ -102,14 +93,6 @@ const AddBuilding = () => {
                   <option value="BLOCKY">BLOCKY</option>
                   <option value="BLOCK_PANEL">BLOCK_PANEL</option>
                 </Input>
-                <Input
-                  labelText={'title'}
-                  type="text"
-                  name="title"
-                  className="input__title"
-                  value={values.title}
-                  onChange={handleChange}
-                />
                 <button type="submit">Submit</button>
               </Form>
             )}

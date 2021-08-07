@@ -19,7 +19,7 @@ const Sections = () => {
   const buildingId = useSelector(state => state.building.currentBuildingId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
-  const fetchUrlPart = leftUrlParts.sections + projectId;
+  const fetchUrlPart = leftUrlParts.sections;
   const dataActionsReducer = sectionsActions.fetchSections;
 
   console.log(sections);
@@ -30,8 +30,8 @@ const Sections = () => {
   console.log(filteredSections);
   
   useEffect(() => {
-    fetchData(dispatch, fetchUrlPart, dataActionsReducer);
-  }, [dispatch, fetchUrlPart, dataActionsReducer]);
+    fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
 
   return (
     <Wrap>

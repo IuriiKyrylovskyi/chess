@@ -22,7 +22,7 @@ const Types = () => {
   const sectionId = useSelector(state => state.section.currentSectionId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
-  const fetchUrlPart = leftUrlParts.types + projectId;
+  const fetchUrlPart = leftUrlParts.types;
   const dataActionsReducer = typesActions.fetchTypes;
 
   console.log(fetchUrlPart);
@@ -35,8 +35,8 @@ const Types = () => {
   const bgImageAdd = './images/projects/main_cropped.jpg';
 
   useEffect(() => {
-    fetchData(dispatch, fetchUrlPart, dataActionsReducer);
-  }, [dispatch, fetchUrlPart, dataActionsReducer]);
+    fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
 
   return (
     <Wrap>

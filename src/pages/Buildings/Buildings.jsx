@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { buildingsActions } from '../../store/buildings';
 
@@ -10,23 +10,28 @@ import Wrap from '../../components/common/Wrap/Wrap';
 import Building from '../../components/Building/Building';
 import Add from '../../components/Add/Add';
 
-import './styles.scss';
 import CardWrap from '../../components/common/CardWrap/CardWrap';
+import CardControls from '../../components/common/CardControls/CardControls';
+
+import './styles.scss';
 
 const Buildings = () => {
   const projectId = useSelector(state => state.project.currentProjectId);
   const buildings = useSelector(state => state.buildingsArr.buildings);
   const dispatch = useDispatch();
-  const fetchUrlPart = leftUrlParts.buildings + projectId;
+  const urlPart = leftUrlParts.buildings;
   const dataActionsReducer = buildingsActions.fetchBuildings;
 
   // console.log(buildings);
 
   const bgImageAdd = './images/projects/main_cropped.jpg';
 
+  const getData = () => fetchData(dispatch, urlPart, dataActionsReducer, projectId);
+
   useEffect(() => {
-    fetchData(dispatch, fetchUrlPart, dataActionsReducer);
-  }, [dispatch, fetchUrlPart, dataActionsReducer]);
+    getData();
+    // fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  }, []);
 
   return (
     <Wrap>
@@ -36,18 +41,19 @@ const Buildings = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
         {buildings.map(building => (
-          <NavLink key={building.id} to="/sections">
-            <CardWrap cardBgImage={building.image || '#f3e357'}>
+          <CardWrap cardBgImage={building.image || '#f3e357'}>
+            <Link key={building.id} to="/sections">
               <Building props={building} />
-            </CardWrap>
-          </NavLink>
+            </Link>
+            <CardControls id={building.id} fetchData={getData} itemToDel="/buildings/" />
+          </CardWrap>
         ))}
         {/* )} */}
-        <NavLink to="/building/add">
+        <Link to="/building/add">
           <CardWrap cardBgImage={{ bgImageAdd }}>
             <Add text={'дом'} />
           </CardWrap>
-        </NavLink>
+        </Link>
       </Wrap>
     </Wrap>
   );

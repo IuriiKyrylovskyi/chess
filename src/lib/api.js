@@ -6,8 +6,13 @@ import { loadingActions } from '../store/loading';
 import { baseUrl } from './baseUrl';
 
 // export const fetchBuildingsList = (dispatch, projectId, buildingsActions) => {
-export const fetchData = (dispatch, urlPart, dataActionsReducer) => {
-  return axios(`${baseUrl}${urlPart}`)
+export const fetchData = (dispatch, urlPart, dataActionsReducer, id) => {
+  return axios
+    .get(`${baseUrl}${urlPart}`, {
+      params: {
+        project: `${id}`,
+      },
+    })
     .then(response => {
       // dispatch(dataActions.fetchBuildings(response.data));
       dispatch(dataActionsReducer(response.data));
@@ -34,9 +39,9 @@ export const fetchData = (dispatch, urlPart, dataActionsReducer) => {
     });
 };
 
-export const postData = (dispatch, urlPart, history, data) => {
+export const postData = (dispatch, urlPart, history, data, id) => {
   return axios
-    .post(`${baseUrl}${urlPart}`, data)
+    .post(`${baseUrl}${urlPart}/?project=${id}`, data)
     .then(response => {
       if (response.ok) {
         dispatch(
@@ -46,7 +51,8 @@ export const postData = (dispatch, urlPart, history, data) => {
             message: "Data's saved successfully",
           }),
         );
-        history.push(urlPart);
+        history.goBack() !== '/projects' && history.goBack();
+        // history.push(urlPartBack);
       }
     })
     .catch(error => {
@@ -64,9 +70,9 @@ export const postData = (dispatch, urlPart, history, data) => {
     });
 };
 
-export const deleteData = (dispatch, urlPart, id) => {
+export const deleteData = (dispatch, urlPart, id, history, item) => {
   return axios
-    .delete(`${baseUrl}${urlPart}${id}`)
+    .delete(`${baseUrl}${urlPart}${item}${id}`)
     .then(response => {
       if (response.ok) {
         dispatch(
@@ -76,6 +82,7 @@ export const deleteData = (dispatch, urlPart, id) => {
             message: "Data's been deleted successfully",
           }),
         );
+        history.goBack() !== '/projects' && history.goBack();
       }
     })
     .catch(error => {
