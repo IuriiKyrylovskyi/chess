@@ -5,5 +5,5 @@ export const leftUrlParts = {
   buildings: '/projects/buildings',
   sections: '/projects/sections',
   types: '/flats/types',
-  flats: '/flats/?project=',
+  flats: '/flats',
 };

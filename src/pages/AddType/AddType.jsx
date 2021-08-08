@@ -13,46 +13,70 @@ import '../../components/common/common.scss';
 const AddType = () => {
   const projectId = useSelector(state => state.project.currentProjectId);
   const buildingId = useSelector(state => state.building.currentBuildingId);
+  const sectionId = useSelector(state => state.section.currentSectionId);
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const partUrl = leftUrlParts.types + projectId;
+  const partUrl = leftUrlParts.types;
+  const goBackPath = '/types';
 
   const initialValues = {
-    id: 1,
-    title: '',
+    title: 'Test-',
     img_main: '',
     img_extra: '',
-    square_total: 1,
-    rooms: 1,
+    square_total: 100,
+    rooms: 5,
     levels: 1,
     property_type: '',
     project: projectId,
     building: buildingId,
-    section: 1,
+    section: sectionId,
     floor: 1,
   };
 
   const onSubmit = values => {
     alert(JSON.stringify(values, null, 2));
-    const data = {
-      id: values.id,
-      title: values.title,
-      img_main: values.img_main,
-      img_extra: values.img_extra,
-      square_total: values.square_total,
-      rooms: values.rooms,
-      levels: values.levels,
-      property_type: values.property_type,
-      project: values.project,
-      building: values.building,
-      section: values.section,
-      floor: values.floor,
-    };
-    console.log(data);
+
+    const formData = new FormData();
+
+    formData.append('title', values.title);
+    if (values.file) formData.append('img_main', values.img_main);
+    if (values.file) formData.append('img_extra', values.img_extra);
+    formData.append('square_total', values.square_total);
+    formData.append('rooms', values.rooms);
+    formData.append('levels', values.levels);
+    formData.append('property_type', values.property_type);
+    formData.append('floor', values.floor);
+    formData.append('project', projectId);
+    formData.append('building', buildingId);
+    formData.append('section', sectionId);
+
+    // console.log(history.goBack());
+    console.log(sectionId);
     console.log(partUrl);
-    postData(dispatch, partUrl, history, data);
+    console.log(goBackPath);
+    postData(dispatch, partUrl, history, formData, goBackPath, projectId);
   };
+
+  // const onSubmit = values => {
+  //   alert(JSON.stringify(values, null, 2));
+  //   const data = {
+  //     // title: values.title,
+  //     // img_main: values.img_main,
+  //     // img_extra: values.img_extra,
+  //     // square_total: values.square_total,
+  //     // rooms: values.rooms,
+  //     // levels: values.levels,
+  //     property_type: values.property_type,
+  //     project: values.project,
+  //     building: values.building,
+  //     section: values.section,
+  //     floor: values.floor,
+  //   };
+  //   console.log(data);
+  //   console.log(partUrl);
+  //   postData(dispatch, partUrl, history, data);
+  // };
 
   return (
     <div className="addpage">
@@ -78,14 +102,14 @@ const AddType = () => {
                 value={values.title}
                 onChange={handleChange}
               />
-              <Input
+              {/* <Input
                 labelText={'building'}
                 type="number"
                 name="building"
                 className="input__building"
                 value={values.building}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'floor'}
                 type="number"
@@ -94,14 +118,14 @@ const AddType = () => {
                 value={values.floor}
                 onChange={handleChange}
               />
-              <Input
+              {/* <Input
                 labelText={'id'}
                 type="number"
                 name="id"
                 className="input__id"
                 value={values.id}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'img_extra'}
                 type="file"
@@ -128,14 +152,14 @@ const AddType = () => {
                 value={values.levels}
                 onChange={handleChange}
               />
-              <Input
+              {/* <Input
                 labelText={'project'}
                 type="number"
                 name="project"
                 className="input__project"
                 value={values.project}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'property_type'}
                 as="select"
@@ -157,14 +181,14 @@ const AddType = () => {
                 value={values.rooms}
                 onChange={handleChange}
               />
-              <Input
+              {/* <Input
                 labelText={'section'}
                 type="number"
                 name="section"
                 className="input__section"
                 value={values.section}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'square_total'}
                 type="number"

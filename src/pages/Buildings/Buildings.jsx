@@ -7,9 +7,9 @@ import { fetchData } from '../../lib/api';
 import { leftUrlParts } from '../../lib/baseUrl';
 
 import Wrap from '../../components/common/Wrap/Wrap';
+import BreadCrumbs from '../../components/common/BreadCrumbs/BreadCrumbs';
 import Building from '../../components/Building/Building';
 import Add from '../../components/Add/Add';
-
 import CardWrap from '../../components/common/CardWrap/CardWrap';
 import CardControls from '../../components/common/CardControls/CardControls';
 
@@ -35,14 +35,14 @@ const Buildings = () => {
 
   return (
     <Wrap>
-      <h1 className="buildings__title">{`Project ${projectId}/ buildings`}</h1>
+      <BreadCrumbs projectId={projectId} />
       <Wrap>
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
       ) : ( */}
         {buildings.map(building => (
-          <CardWrap cardBgImage={building.image || '#f3e357'}>
-            <Link key={building.id} to="/sections">
+          <CardWrap key={building.id} cardBgImage={building.image || '#f3e357'}>
+            <Link to="/sections">
               <Building props={building} />
             </Link>
             <CardControls id={building.id} fetchData={getData} itemToDel="/buildings/" />

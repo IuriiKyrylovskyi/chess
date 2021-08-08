@@ -71,6 +71,14 @@ const AddProject = () => {
           }) => (
             <Form>
               <Input
+                labelText={'title'}
+                type="text"
+                name="title"
+                className="input__title"
+                value={values.title}
+                onChange={handleChange}
+              />
+              <Input
                 labelText={'address_sales_dep'}
                 type="text"
                 name="address_sales_dep"
@@ -168,14 +176,6 @@ const AddProject = () => {
                 name="site"
                 className="input__site"
                 value={values.site}
-                onChange={handleChange}
-              />
-              <Input
-                labelText={'title'}
-                type="text"
-                name="title"
-                className="input__title"
-                value={values.title}
                 onChange={handleChange}
               />
               <button type="submit">Submit</button>

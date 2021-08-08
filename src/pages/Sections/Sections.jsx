@@ -11,6 +11,7 @@ import Add from '../../components/Add/Add';
 import CardWrap from '../../components/common/CardWrap/CardWrap';
 import Wrap from '../../components/common/Wrap/Wrap';
 import CardControls from '../../components/common/CardControls/CardControls';
+import BreadCrumbs from '../../components/common/BreadCrumbs/BreadCrumbs';
 
 import './styles.scss';
 
@@ -42,14 +43,14 @@ const Sections = () => {
 
   return (
     <Wrap>
-      <h1 className="sections__title">{`Project ${projectId}/ Building ${buildingName}/ sections`}</h1>
+      <BreadCrumbs projectId={projectId} buildingName={buildingName} />
       <Wrap>
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
         {filteredSections.map(section => (
-          <CardWrap>
-            <Link key={section.id} to="/types">
+          <CardWrap key={section.id}>
+            <Link to="/types">
               <Section props={section} />
             </Link>
             <CardControls id={section.id} fetchData={getData} itemToDel="/sections/" />

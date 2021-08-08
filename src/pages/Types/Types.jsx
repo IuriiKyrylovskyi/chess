@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { typesActions } from '../../store/types';
 
@@ -10,8 +10,10 @@ import { arrayUniqueByKey } from '../../functions/functions';
 
 import Wrap from '../../components/common/Wrap/Wrap';
 import CardWrap from '../../components/common/CardWrap/CardWrap';
+import BreadCrumbs from '../../components/common/BreadCrumbs/BreadCrumbs';
 import Type from '../../components/Type/Type';
 import Add from '../../components/Add/Add';
+import CardControls from '../../components/common/CardControls/CardControls';
 
 import './styles.scss';
 
@@ -22,10 +24,10 @@ const Types = () => {
   const sectionId = useSelector(state => state.section.currentSectionId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
-  const fetchUrlPart = leftUrlParts.types;
+  const urlPart = leftUrlParts.types;
   const dataActionsReducer = typesActions.fetchTypes;
 
-  console.log(fetchUrlPart);
+  console.log(urlPart);
   console.log(types);
 
   // const key = 'flat_type.title';
@@ -34,31 +36,39 @@ const Types = () => {
 
   const bgImageAdd = './images/projects/main_cropped.jpg';
 
-  useEffect(() => {
-    fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
-  }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
+   const getData = () => fetchData(dispatch, urlPart, dataActionsReducer, projectId);
+
+   useEffect(() => {
+     getData();
+     // fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+   }, []);
+  
+  // useEffect(() => {
+  //   fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  // }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
 
   return (
     <Wrap>
-      <h1 className="Types__title">{`Project ${projectId}/ Building ${buildingName}/ Section ${sectionId}/ Types`}</h1>
+      <BreadCrumbs projectId={projectId} buildingName={buildingName} sectionId={sectionId} />
       <Wrap>
         {/* {loading ? (
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
         {/* {uniqueTypes.map(type => ( */}
         {types.map(type => (
-          <NavLink key={type.id} to="/">
-            <CardWrap>
+          <CardWrap key={type.id} cardBgImage={'./images/add.png'}>
+            <Link to="/">
               <Type props={type} />
-            </CardWrap>
-          </NavLink>
+            </Link>
+            <CardControls id={type.id} fetchData={getData} itemToDel="/type/" />
+          </CardWrap>
         ))}
         {/* )} */}
-        <NavLink to="/Type/add">
+        <Link to="/type/add">
           <CardWrap cardBgImage={{ bgImageAdd }}>
             <Add text={'план'} />
           </CardWrap>
-        </NavLink>
+        </Link>
       </Wrap>
     </Wrap>
   );

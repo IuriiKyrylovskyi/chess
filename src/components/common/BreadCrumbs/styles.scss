@@ -1,0 +1,24 @@
+.breadcrumbs {
+  &__list {
+    display: flex;
+  }
+  &__item {
+    font-weight: 500;
+    margin: 0 10px;
+    text-transform: capitalize;
+    a {
+      color: blue;
+      transition: all 0.3s linear;
+      margin: 0;
+      &:hover {
+        color: yellow;
+      }
+    }
+    a.active {
+      color: red;
+      &:hover {
+        color: rgb(97, 155, 4);
+      }
+    }
+  }
+}

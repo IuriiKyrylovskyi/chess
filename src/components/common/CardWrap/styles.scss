@@ -1,7 +1,7 @@
 .card {
   flex: 0 0 20%;
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 300px;
+  max-width: 500px;
   min-height: 200px;
   padding: 15px;
   background-color: rgb(248, 248, 248);
@@ -15,6 +15,8 @@
   position: relative;
 
   &__wrap {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     cursor: pointer;

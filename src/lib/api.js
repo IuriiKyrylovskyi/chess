@@ -55,9 +55,10 @@ export const postData = (dispatch, urlPart, history, data, goBackPath, id) => {
         // console.log(history.location.pathname);
         // history.location.pathname === "/building/add" && history.push("/buildings");
         // history.location.pathname === "/project/add" && history.push("/projects");
-        history.push(goBackPath);
+        // history.push(goBackPath);
       }
     })
+    .then(() => history.push(goBackPath))
     .catch(error => {
       console.error('Error saving data: ', error);
       dispatch(
