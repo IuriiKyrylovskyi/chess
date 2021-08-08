@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { sectionsActions } from '../../store/sections';
 
@@ -8,10 +8,11 @@ import { leftUrlParts } from '../../lib/baseUrl';
 
 import Section from '../../components/Section/Section';
 import Add from '../../components/Add/Add';
-
-import './styles.scss';
 import CardWrap from '../../components/common/CardWrap/CardWrap';
 import Wrap from '../../components/common/Wrap/Wrap';
+import CardControls from '../../components/common/CardControls/CardControls';
+
+import './styles.scss';
 
 const Sections = () => {
   const sections = useSelector(state => state.sectionsArr.sections);
@@ -19,7 +20,7 @@ const Sections = () => {
   const buildingId = useSelector(state => state.building.currentBuildingId);
   const buildingName = useSelector(state => state.building.currentBuildingId);
   const dispatch = useDispatch();
-  const fetchUrlPart = leftUrlParts.sections;
+  const urlPart = leftUrlParts.sections;
   const dataActionsReducer = sectionsActions.fetchSections;
 
   console.log(sections);
@@ -28,10 +29,16 @@ const Sections = () => {
 
   const filteredSections = sections.filter(section => section.building === buildingId);
   console.log(filteredSections);
-  
+
+  const getData = () => fetchData(dispatch, urlPart, dataActionsReducer, projectId);
+
   useEffect(() => {
-    fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
-  }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
+    getData();
+    // fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  }, []);
+  // useEffect(() => {
+  //   fetchData(dispatch, fetchUrlPart, dataActionsReducer, projectId);
+  // }, [dispatch, fetchUrlPart, dataActionsReducer, projectId]);
 
   return (
     <Wrap>
@@ -41,18 +48,19 @@ const Sections = () => {
         <h1 styles={{ margin: '200px auto' }}>Loading...</h1>
         ) : ( */}
         {filteredSections.map(section => (
-          <NavLink key={section.id} to="/types">
-            <CardWrap>
+          <CardWrap>
+            <Link key={section.id} to="/types">
               <Section props={section} />
-            </CardWrap>
-          </NavLink>
+            </Link>
+            <CardControls id={section.id} fetchData={getData} itemToDel="/sections/" />
+          </CardWrap>
         ))}
         {/* )} */}
-        <NavLink to="/section/add">
+        <Link to="/section/add">
           <CardWrap cardBgImage={{ bgImageAdd }}>
             <Add text={'секцию'} />
           </CardWrap>
-        </NavLink>
+        </Link>
       </Wrap>
     </Wrap>
   );

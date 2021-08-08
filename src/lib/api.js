@@ -39,7 +39,7 @@ export const fetchData = (dispatch, urlPart, dataActionsReducer, id) => {
     });
 };
 
-export const postData = (dispatch, urlPart, history, data, id) => {
+export const postData = (dispatch, urlPart, history, data, goBackPath, id) => {
   return axios
     .post(`${baseUrl}${urlPart}/?project=${id}`, data)
     .then(response => {
@@ -51,8 +51,11 @@ export const postData = (dispatch, urlPart, history, data, id) => {
             message: "Data's saved successfully",
           }),
         );
-        history.goBack() !== '/projects' && history.goBack();
-        // history.push(urlPartBack);
+        // history.goBack() !== '/projects' && history.goBack();
+        // console.log(history.location.pathname);
+        // history.location.pathname === "/building/add" && history.push("/buildings");
+        // history.location.pathname === "/project/add" && history.push("/projects");
+        history.push(goBackPath);
       }
     })
     .catch(error => {
@@ -70,7 +73,7 @@ export const postData = (dispatch, urlPart, history, data, id) => {
     });
 };
 
-export const deleteData = (dispatch, urlPart, id, history, item) => {
+export const deleteData = (dispatch, urlPart, id, item) => {
   return axios
     .delete(`${baseUrl}${urlPart}${item}${id}`)
     .then(response => {
@@ -82,7 +85,6 @@ export const deleteData = (dispatch, urlPart, id, history, item) => {
             message: "Data's been deleted successfully",
           }),
         );
-        history.goBack() !== '/projects' && history.goBack();
       }
     })
     .catch(error => {

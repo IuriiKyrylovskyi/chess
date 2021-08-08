@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { postData } from '../../lib/api';
 import { leftUrlParts } from '../../lib/baseUrl';
@@ -14,9 +14,8 @@ import '../../components/common/common.scss';
 const AddProject = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const params = useParams();
   const partUrl = leftUrlParts.projects;
-  const urlPartBack = '';
+  const goBackPath = '/projects';
 
   const initialValues = {
     title: 'Utlandia',
@@ -49,10 +48,10 @@ const AddProject = () => {
     formData.append('phone_sales_dep', values.phone_sales_dep);
     if (values.site.length) formData.append('site', values.site);
 
-    console.log(history.goBack());
-    console.log(params);
+    // console.log(history.goBack());
     console.log(partUrl);
-    postData(dispatch, partUrl, history, formData);
+    console.log(goBackPath);
+    postData(dispatch, partUrl, history, formData, goBackPath);
   };
 
   return (

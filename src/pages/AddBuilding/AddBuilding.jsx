@@ -17,6 +17,7 @@ const AddBuilding = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const partUrl = leftUrlParts.buildings;
+  const goBackPath = '/buildings';
 
   const initialValues = {
     // id: 0,
@@ -36,8 +37,9 @@ const AddBuilding = () => {
       title: values.title,
     };
     console.log(data);
-    // console.log(history.goBack());
-    postData(dispatch, partUrl, history, data, projectId);
+    console.log(goBackPath);
+    console.log(history);
+    postData(dispatch, partUrl, history, data, goBackPath, projectId);
   };
 
   return (

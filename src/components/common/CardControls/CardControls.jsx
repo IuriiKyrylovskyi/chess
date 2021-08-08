@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import { deleteData } from '../../../lib/api';
 import { leftUrlParts } from '../../../lib/baseUrl';
@@ -10,12 +10,12 @@ import './styles.scss';
 
 const CardControls = ({ id, fetchData, itemToDel }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const partUrl = leftUrlParts.projects;
 
   const onDelete = () => {
     console.log(id);
-    deleteData(dispatch, partUrl, id, history, itemToDel).then(() => fetchData());
+    deleteData(dispatch, partUrl, id, itemToDel).then(() => fetchData());
   };
 
   return (

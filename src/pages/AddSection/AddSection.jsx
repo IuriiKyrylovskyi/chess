@@ -17,26 +17,25 @@ const AddSection = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const partUrl = leftUrlParts.sections + projectId;
+  const partUrl = leftUrlParts.sections;
+  const goBackPath = '/sections';
 
   const initialValues = {
-    building: 0,
-    id: buildingtId,
-    project: projectId,
     title: 'section',
+    building: buildingtId,
+    project: projectId,
   };
 
   const onSubmit = values => {
     alert(JSON.stringify(values, null, 2));
     const data = {
-      building: values.id,
-      id: values.id,
-      project: projectId,
       title: values.title,
+      building: buildingtId,
+      project: projectId,
     };
     console.log(data);
     console.log(partUrl);
-    postData(dispatch, partUrl, history, data);
+    postData(dispatch, partUrl, history, data, goBackPath, projectId);
   };
 
   return (
@@ -55,7 +54,7 @@ const AddSection = () => {
             /* and other goodies */
           }) => (
             <Form>
-              <Input
+              {/* <Input
                 labelText={'building'}
                 type="text"
                 name="building"
@@ -78,7 +77,7 @@ const AddSection = () => {
                 className="input__project"
                 value={values.project}
                 onChange={handleChange}
-              />
+              /> */}
               <Input
                 labelText={'title'}
                 type="text"
